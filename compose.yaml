@@ -1,0 +1,12 @@
+services:
+  langchain:
+    build:
+      context: ./langchain
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - 8000:8000
+    volumes:
+      - ./langchain:/app
+    env_file:
+      - ./langchain/.env
