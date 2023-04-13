@@ -1,7 +1,7 @@
-from langchain.llms import OpenAI
+from fastapi import FastAPI
 
-# LLMの準備
-llm = OpenAI(temperature=0.9)
+app = FastAPI()
 
-# LLMの呼び出し
-print(llm("コンピュータゲームを作る日本語の新会社名をを1つ提案してください"))
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
