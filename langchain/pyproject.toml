@@ -5,7 +5,7 @@ description = ""
 authors = ["Mochineko"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "langchain_docker"}]
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -16,6 +16,7 @@ chromadb = "^0.3.21"
 tiktoken = "^0.3.3"
 uvicorn = "^0.21.1"
 fastapi = "^0.95.0"
+google-api-python-client = "^2.85.0"
 
 
 [build-system]

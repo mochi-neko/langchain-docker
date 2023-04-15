@@ -12,8 +12,10 @@ RUN poetry install --no-root
 
 COPY . .
 
+ENV PYTHONPATH="/app:${PYTHONPATH}"
+
 EXPOSE 8000
 
 ENTRYPOINT ["poetry", "run"]
 
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "src.main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
