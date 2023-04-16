@@ -1,6 +1,6 @@
-from langchain import GoogleSearchAPIWrapper
-from langchain.agents import load_tools, ZeroShotAgent, initialize_agent, AgentType, Tool
 import langchain.llms
+from langchain import GoogleSearchAPIWrapper
+from langchain.agents import initialize_agent, AgentType, Tool
 from langchain.schema import BaseMemory
 
 
