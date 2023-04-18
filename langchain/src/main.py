@@ -24,7 +24,7 @@ class SearchAgentRequest(BaseModel):
 
 @app.post("/agents/search")
 async def search_agent(request: SearchAgentRequest):
-    response = search_agent_executor.run(request.content)
+    response = await search_agent_executor.arun(request.content)
     return {"response": response}
 
 # Conversation agent
@@ -35,7 +35,7 @@ class ConversationAgentRequest(BaseModel):
 
 @app.post("/agents/conversation")
 async def conversation_agent(request: ConversationAgentRequest):
-    response = conversation_agent_executor.run(input=request.content, chat_history=memory.chat_memory)
+    response = await conversation_agent_executor.arun(input=request.content, chat_history=memory.chat_memory)
     return {"response": response}
 
 # Vector store agent
@@ -46,5 +46,5 @@ class VectorStoreAgentRequest(BaseModel):
 
 @app.post("/agents/vector-store")
 async def vector_store_agent(request: VectorStoreAgentRequest):
-    response = vector_store_agent_executor.run(request.content)
+    response = await vector_store_agent_executor.arun(request.content)
     return {"response": response}
