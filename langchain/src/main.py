@@ -11,6 +11,9 @@ app = FastAPI()
 llm = OpenAIChat()
 memory = ConversationSummaryBufferMemory(llm=llm, memory_key="chat_history", return_messages=True)
 
+class AgentResponse(BaseModel):
+    result: str
+
 # Root
 @app.get("/")
 def read_root():
@@ -33,10 +36,10 @@ conversation_agent_executor = conversational_agent.setup_agent(llm=llm, memory=m
 class ConversationAgentRequest(BaseModel):
     content: str
 
-@app.post("/agents/conversation")
+@app.post("/agents/conversation", response_model=AgentResponse)
 async def conversation_agent(request: ConversationAgentRequest):
-    response = await conversation_agent_executor.arun(input=request.content, chat_history=memory.chat_memory)
-    return {"response": response}
+    result = await conversation_agent_executor.arun(input=request.content, chat_history=memory.chat_memory)
+    return {"result": result}
 
 # Vector store agent
 vector_store_agent_executor = vector_store_agent.setup_agent(llm=llm, memory=memory)
@@ -44,7 +47,7 @@ vector_store_agent_executor = vector_store_agent.setup_agent(llm=llm, memory=mem
 class VectorStoreAgentRequest(BaseModel):
     content: str
 
-@app.post("/agents/vector-store")
+@app.post("/agents/vector-store", response_model=AgentResponse)
 async def vector_store_agent(request: VectorStoreAgentRequest):
-    response = await vector_store_agent_executor.arun(request.content)
-    return {"response": response}
+    result = await vector_store_agent_executor.arun(request.content)
+    return {"result": result}
