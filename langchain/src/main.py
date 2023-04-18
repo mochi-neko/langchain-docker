@@ -17,15 +17,15 @@ def read_root():
     return {"Hello": "World"}
 
 # Search agent
-search_agent_executor = agent_with_google_search.setup_agent(llm=llm, memory=memory)
-
-class SearchAgentRequest(BaseModel):
-    content: str
-
-@app.post("/agents/search")
-async def search_agent(request: SearchAgentRequest):
-    response = await search_agent_executor.arun(request.content)
-    return {"response": response}
+# search_agent_executor = agent_with_google_search.setup_agent(llm=llm, memory=memory)
+#
+# class SearchAgentRequest(BaseModel):
+#     content: str
+#
+# @app.post("/agents/search", response_model=AgentResponse)
+# async def search_agent(request: SearchAgentRequest):
+#     result = await search_agent_executor.arun(request.content)
+#     return {"result": result}
 
 # Conversation agent
 conversation_agent_executor = conversational_agent.setup_agent(llm=llm, memory=memory)
