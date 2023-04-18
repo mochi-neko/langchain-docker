@@ -12,8 +12,6 @@ RUN poetry install --no-root
 
 COPY . .
 
-ENV PYTHONPATH="/app:${PYTHONPATH}"
-
 EXPOSE 8000
 
 ENTRYPOINT ["poetry", "run"]
