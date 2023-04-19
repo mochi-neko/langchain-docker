@@ -1,0 +1,19 @@
+{
+    "name": "Mochineko.LangChainDockerUnity.Samples",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e7a7e2abc9460471f8d6112b9336a035",
+        "GUID:2620e54ab6edb48f48d55966fd5662fb",
+        "GUID:51d11816546934d4a937e4a420478ce5",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
