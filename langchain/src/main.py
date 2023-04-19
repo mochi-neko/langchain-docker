@@ -38,7 +38,7 @@ class ConversationAgentRequest(BaseModel):
 
 @app.post("/agents/conversation", response_model=AgentResponse)
 async def conversation_agent(request: ConversationAgentRequest):
-    result = await conversation_agent_executor.arun(input=request.content, chat_history=memory.chat_memory)
+    result = conversation_agent_executor.run(input=request.content, chat_history=memory.chat_memory)
     return {"result": result}
 
 # Vector store agent
@@ -49,5 +49,5 @@ class VectorStoreAgentRequest(BaseModel):
 
 @app.post("/agents/vector-store", response_model=AgentResponse)
 async def vector_store_agent(request: VectorStoreAgentRequest):
-    result = await vector_store_agent_executor.arun(request.content)
+    result = vector_store_agent_executor.run(request.content)
     return {"result": result}
