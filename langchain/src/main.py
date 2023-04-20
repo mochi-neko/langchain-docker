@@ -25,7 +25,9 @@ def read_root():
 
 
 # Setup conversation agent
-conversation_agent_executor = conversational_agent.setup_agent(llm=llm, memory=memory)
+conversation_agent_executor = conversational_agent.setup_agent(
+    llm=llm,
+    memory=memory)
 
 
 # Define conversation agent API
@@ -35,5 +37,7 @@ class ConversationAgentRequest(BaseModel):
 
 @app.post("/agents/conversation", response_model=AgentResponse)
 async def conversation_agent(request: ConversationAgentRequest):
-    result = conversation_agent_executor.run(input=request.content, chat_history=memory.chat_memory)
+    result = conversation_agent_executor.run(
+        input=request.content,
+        chat_history=memory.chat_memory)
     return {"result": result}
