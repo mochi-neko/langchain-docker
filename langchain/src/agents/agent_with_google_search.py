@@ -6,7 +6,7 @@ from langchain import LLMChain
 def setup_agent(llm : langchain.llms.BaseLLM, memory: BaseMemory):
     tools = load_tools(["google-search"], llm=llm)
     prefix = """次の質問にできる限り答えてください。次のツールにアクセスできます:"""
-    suffix = """始めましょう! 最終的な答えを出すときは、一人称は"ぼく"、語尾には"なのだ"を使用してください
+    suffix = """始めましょう!
 
     Question: {input}
     {agent_scratchpad}"""
