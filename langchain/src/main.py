@@ -12,8 +12,7 @@ app = FastAPI()
 llm = OpenAIChat()
 memory = ConversationSummaryMemory(
     llm=llm,
-    memory_key="chat_history",
-    return_messages=True)
+    memory_key="chat_history")
 
 
 # Define shared agent response
